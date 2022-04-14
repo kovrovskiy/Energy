@@ -1,4 +1,4 @@
-#ver.140420221611
+#ver.140420221619
 import configparser, os, sys, smtplib, logging
 #import imp
 #from re import I
