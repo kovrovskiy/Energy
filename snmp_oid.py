@@ -1,5 +1,6 @@
 #ver.1404202233
 import configparser, os, sys, smtplib, logging
+#import imp
 #from re import I
 from select import select
 from snmp_cmds import snmpwalk
@@ -7,6 +8,7 @@ from datetime import datetime
 from sqlalchemy import create_engine, select, MetaData, Table, Column, Integer
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email.header import Header
 
 current_datetime = datetime.now().date()
 current_date = datetime.now()
@@ -88,12 +90,12 @@ def smtp_sender(energy_per_month, cost_per_month):
     msg = MIMEMultipart()                              
     msg['From']    = addr_from                         
     msg['To']      = addr_to                            
-    msg['Subject'] = 'Потребление электроэнергии '+str(config["name"]["name_corp"])           
+    msg['Subject'] = 'Потребление электроэнергии '+str(config["name"]["name_corp"])
 
     body = "Потребление за месяц: "+str(energy_per_month)+" кВат\n"\
     "Сумма: "+str(cost_per_month)+" руб.\n"\
     "Сумма рассчитывается из стоимости "+str(priceList)+" руб/кВат \n\n\n"\
-    "*Автоматическая система получения данных электропотребления "+config["name"]["name_corp"] 
+    "*Автоматическая система получения данных электропотребления "+config["name"]["name_corp"]
     msg.attach(MIMEText(body, 'plain'))
     server = smtplib.SMTP(config["email"]["smtp_server"], config["email"]["smtp_port"])           
     #server.set_debuglevel(True)                         
