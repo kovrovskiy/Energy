@@ -1,3 +1,1 @@
-# Project Energy
-
-snmp data collection
+# Getting power consumption data via snmp protocol
