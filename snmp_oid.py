@@ -1,4 +1,4 @@
-#ver.13042022
+#ver.14042022
 import configparser, os, sys, smtplib, logging
 #from re import I
 from select import select
@@ -97,7 +97,10 @@ def smtp_sender(energy_per_month, cost_per_month):
     msg.attach(MIMEText(body, 'plain'))
     server = smtplib.SMTP(config["email"]["smtp_server"], config["email"]["smtp_port"])           
     #server.set_debuglevel(True)                         
-    #server.starttls()                                 
+    if config["email"]["smtp_ssl"] == "yes":
+        server.starttls()
+    else:
+        logger.warning("An unencrypted connection is used")                             
     server.login(config["email"]["smtp_user"], password)               
     server.send_message(msg)                           
     server.quit()
@@ -134,7 +137,6 @@ else:
         day_receipt
     except Exception as curday:
         logger.error(curday)
-     #print("Incorrect date =", day_receipt)
     sys.exit()
 
 #Conn to sql db
