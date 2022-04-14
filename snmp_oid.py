@@ -92,7 +92,7 @@ def smtp_sender(energy_per_month, cost_per_month):
     body = "Потребление за месяц: "+str(energy_per_month)+" кВат\n"\
     "Сумма: "+str(cost_per_month)+" руб.\n"\
     "Сумма рассчитывается из стоимости "+str(priceList)+" руб/кВат \n\n\n"\
-    "*Автоматическая система получения данных электропотребления "+config["name"]["name_corp"]
+    "*Автоматическая система получения данных электропотребления"
     msg.attach(MIMEText(body, 'plain'))
     server = smtplib.SMTP(config["email"]["smtp_server"], config["email"]["smtp_port"])           
     #server.set_debuglevel(True)                         
