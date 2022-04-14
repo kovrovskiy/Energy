@@ -1,14 +1,11 @@
 #ver.140420221619
 import configparser, os, sys, smtplib, logging
-#import imp
-#from re import I
 from select import select
 from snmp_cmds import snmpwalk
 from datetime import datetime
 from sqlalchemy import create_engine, select, MetaData, Table, Column, Integer
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from email.header import Header
 
 current_datetime = datetime.now().date()
 current_date = datetime.now()
@@ -123,7 +120,6 @@ def wr_data_db():
                 conn.execute(insert_energy_sum(line.strip(),energy_receipt_total, price_enrg_total))
 
 #We get the date of data selection
-
 if 1 <= day_receipt <= 31:
 
     if current_date.month == 1:
@@ -153,7 +149,6 @@ energy_table_SUM = Table('ENERGY_SUM', metadata_snmp, Column('date', Integer),\
                 Column('TotalSum', Integer))
 enrg = create_engine("sqlite:///snmpdata.db")
 metadata_snmp.create_all(enrg)
-
 
 #Reading a ip list
 if os.path.exists(file_ipAddr):
