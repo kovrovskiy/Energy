@@ -1,2 +1,3 @@
-# Getting power consumption data via snmp protocol
-# Designed for PDU Raritan PXE-1966
+Getting power consumption data via snmp protocol
+Designed for PDU Raritan PXE-1966
+
