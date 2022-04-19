@@ -1,4 +1,5 @@
 #ver.140420221619
+#PDU Raritan PXE-1966
 import configparser, os, sys, smtplib, logging
 from select import select
 from snmp_cmds import snmpwalk
