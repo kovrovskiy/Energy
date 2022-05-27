@@ -6,7 +6,7 @@ from snmp_cmds import snmpwalk
 from datetime import datetime
 from sqlalchemy import create_engine, select, MetaData, Table, Column, Integer
 
-os.chdir("C:\\Project\\Energy\\")
+
 current_datetime = datetime.now().date()
 current_date = datetime.now()
 
