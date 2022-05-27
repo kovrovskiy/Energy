@@ -30,13 +30,6 @@ else:
     logger.error("Config file not found")
     sys.exit()
 
-"""class Select_energy_value:
-    def __init__(self, column, datetime):
-         self.col = column
-         self.date = datetime
-    def Select_Energy_Value(self):
-        return select([self.col.c.date, self.col.c.ip, self.col.c.data]).where(self.col.c.ip == line.strip()).where(self.col.c.date == self.date)"""
-
 #snmp request function
 def result_oid(comm, ipaddr, oid_value):
     return snmpwalk(community= comm, ipaddress= ipaddr, oid= oid_value)  
