@@ -119,11 +119,11 @@ if 1 <= day_receipt <= 31:
     if current_date.month == 1:
         month_receipt = current_date.month+11
         year_receipt = current_date.year-1
-        date_receipt = datetime(year_receipt, month_receipt, day_receipt).strftime("%Y-%m-%d")
+        date_receipt = datetime(year_receipt, month_receipt-1, day_receipt).strftime("%Y-%m-%d")
     else :
         month_receipt = current_date.month
         year_receipt = current_date.year
-        date_receipt = datetime(year_receipt, month_receipt, day_receipt).strftime("%Y-%m-%d")
+        date_receipt = datetime(year_receipt, month_receipt-1, day_receipt).strftime("%Y-%m-%d")
 else:
     try:
         day_receipt
